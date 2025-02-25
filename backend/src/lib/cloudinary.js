@@ -1,22 +1,35 @@
 import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
 
-dotenv.config(); // Load environment variables
+dotenv.config();
 
-// Ensure CLOUDINARY_CONFIG is defined
-if (!process.env.CLOUDINARY_CONFIG) {
-  console.error("⚠️ Error: CLOUDINARY_CONFIG environment variable is missing!");
-} else {
-  // Split CLOUDINARY_CONFIG into individual values
-  const [cloud_name, api_key, api_secret] =
-    process.env.CLOUDINARY_CONFIG.split(",");
+// Validate and parse the CLOUDINARY_URL
+if (!process.env.CLOUDINARY_URL) {
+  throw new Error("⚠️ Error: CLOUDINARY_URL environment variable is missing!");
+}
+
+try {
+  // Parse the URL
+  const cloudinaryUrl = new URL(process.env.CLOUDINARY_URL);
+
+  // Extract values from the URL
+  const apiKey = cloudinaryUrl.username; // API Key
+  const apiSecret = cloudinaryUrl.password; // API Secret
+  const cloudName = cloudinaryUrl.hostname; // Cloud Name
+
+  console.log(apiKey, apiSecret, cloudName);
 
   // Configure Cloudinary
   cloudinary.config({
-    cloud_name,
-    api_key,
-    api_secret,
+    cloud_name: cloudName,
+    api_key: apiKey,
+    api_secret: apiSecret,
   });
+
+  console.log("✅ Cloudinary configured successfully");
+} catch (error) {
+  console.error("❌ Failed to configure Cloudinary:", error.message);
+  process.exit(1);
 }
 
 export default cloudinary;

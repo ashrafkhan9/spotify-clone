@@ -1,16 +1,14 @@
 <h1 align="center">Realtime Spotify Application ✨</h1>
 
-![Demo App](/frontend/public/screenshot-for-readme.png)
+![HOME PAGE](![Screenshot 2025-02-25 141044](https://github.com/user-attachments/assets/41bc4686-7632-43e7-9698-a59ceeef282e)
+)
 
-[Watch Full Tutorial on Youtube](https://youtu.be/4sbklcQ0EXc)
 
 About This Course:
 
 -   🎸 Listen to music, play next and previous songs
 -   🔈 Update the volume with a slider
 -   🎧 Admin dashboard to create albums and songs
--   💬 Real-time Chat App integrated into Spotify
--   👨🏼‍💼 Online/Offline status
 -   👀 See what other users are listening to in real-time
 -   📊 Aggregate data for the analytics page
 -   🚀 And a lot more...
@@ -37,3 +35,4 @@ CLERK_SECRET_KEY=...
 ```bash
 VITE_CLERK_PUBLISHABLE_KEY=...
 ```
+Live Link: https://spotify-clone-production-261e.up.railway.app/
